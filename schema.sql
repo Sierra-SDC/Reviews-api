@@ -9,7 +9,7 @@ CREATE TABLE reviews (
     reported BOOLEAN, 
     reviewer_name TEXT, 
     reviewer_email TEXT,    
-    reponse TEXT, 
+    response TEXT, 
     helpfulness INT
 );
 
