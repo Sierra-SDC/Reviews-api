@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const sequelize = require('../../util/database');
 const db = require('../../util/database');
 const Photos = require('./photos');
 
@@ -42,17 +43,27 @@ const Reviews = db.define('reviews', {
     allowNull: true,
   },
   reviewer_email: {
-    type: Sequelize.STRING(50),
+    type: Sequelize.STRING(100),
     allowNull: true,
   },
   response: {
-    type: Sequelize.STRING(50),
+    type: Sequelize.STRING(250),
     allowNull: true,
   },
   helpfulness: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+},
+{
+  sequelize,
+  modelName: 'reviews',
+  indexes: [
+    {
+      unique: false,
+      fields: ['product_id'],
+    },
+  ],
 });
 
 Reviews.hasMany(Photos, {
@@ -64,5 +75,7 @@ Photos.belongsTo(Reviews, {
   foreignKey: 'review_id',
   constraints: false,
 });
+
+// Reviews.sync({ alter: true });
 
 module.exports = Reviews;
