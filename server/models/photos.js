@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const sequelize = require('../../util/database');
 const db = require('../../util/database');
 
 const Photos = db.define('photos', {
@@ -16,6 +17,18 @@ const Photos = db.define('photos', {
     type: Sequelize.STRING(300),
     allowNull: false,
   },
+},
+{
+  sequelize,
+  modelName: 'photos',
+  indexes: [
+    {
+      unique: false,
+      fields: ['review_id'],
+    },
+  ],
 });
+
+// Photos.sync({ alter: true });
 
 module.exports = Photos;
