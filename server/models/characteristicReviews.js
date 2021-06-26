@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const sequelize = require('../../util/database');
 const db = require('../../util/database');
 
 const CharacteristicReviews = db.define('characteristic_reviews', {
@@ -20,6 +21,18 @@ const CharacteristicReviews = db.define('characteristic_reviews', {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+},
+{
+  sequelize,
+  modelName: 'characteristic_reviews',
+  indexes: [
+    {
+      unique: false,
+      fields: ['characteristic_id', 'review_id'],
+    },
+  ],
 });
+
+// CharacteristicReviews.sync({ alter: true });
 
 module.exports = CharacteristicReviews;
