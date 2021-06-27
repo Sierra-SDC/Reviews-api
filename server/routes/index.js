@@ -3,8 +3,8 @@ const controllers = require('../controllers');
 
 routes
   .get('/reviews', controllers.getReviews)
-  .get('/reviews/meta', () => console.log('hi'))
-  .post('/reviews', () => console.log('hi'))
+  .get('/reviews/meta', controllers.getMetadata)
+  .post('/reviews', controllers.addReview)
   .put('/reviews/:review_id/helpful', controllers.helpfulReview)
   .put('/reviews/:review_id/report', controllers.reportReview);
 
