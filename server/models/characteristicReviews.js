@@ -8,6 +8,7 @@ const CharacteristicReviews = db.define('characteristic_reviews', {
     autoIncrement: true,
     unique: true,
     primaryKey: true,
+    allowNull: false,
   },
   characteristic_id: {
     type: Sequelize.INTEGER,
