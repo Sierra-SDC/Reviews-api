@@ -9,6 +9,7 @@ const Reviews = db.define('reviews', {
     autoIncrement: true,
     unique: true,
     primaryKey: true,
+    allowNull: false,
   },
   product_id: {
     type: Sequelize.INTEGER,
