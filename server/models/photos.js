@@ -8,6 +8,7 @@ const Photos = db.define('photos', {
     autoIncrement: true,
     unique: true,
     primaryKey: true,
+    allowNull: false,
   },
   review_id: {
     type: Sequelize.INTEGER,
