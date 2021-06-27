@@ -10,6 +10,7 @@ const Products = db.define('products', {
     autoIncrement: true,
     unique: true,
     primaryKey: true,
+    allowNull: false,
   },
   name: {
     type: Sequelize.STRING(200),
