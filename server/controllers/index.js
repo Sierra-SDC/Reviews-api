@@ -184,7 +184,7 @@ module.exports = {
           }));
         Promise.all([createPhotos, createCharacteristics]);
       })
-      .then(() => res.sendStatus(204))
+      .then(() => res.sendStatus(201))
       .catch((err) => res.send(err));
   },
   helpfulReview: (req, res) => {
@@ -193,7 +193,7 @@ module.exports = {
       { helpfulness: sequelize.literal('helpfulness + 1') },
       { where: { review_id } },
     )
-      .then(() => res.sendStatus(201))
+      .then(() => res.sendStatus(204))
       .catch((err) => res.send(err));
   },
   reportReview: (req, res) => {
