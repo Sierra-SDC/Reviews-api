@@ -106,16 +106,6 @@ module.exports = {
       .then((data) => {
         const response = data.map((metaData) => {
           const { reviews, characteristics } = metaData;
-          const addZeroes = (num) => {
-            let output = Number(num);
-            if (output.isNaN) {
-              return 0;
-            }
-            if (String(output).split('.').length < 2 || String(output).split('.')[1].length <= 2) {
-              output = output.toFixed(4);
-              return output;
-            }
-          };
 
           const ratingObj = reviews.reduce((acc, val) => {
             if (acc[val.rating] === undefined) {
@@ -137,19 +127,13 @@ module.exports = {
 
           const characteristicObj = {};
           characteristics.forEach((characteristic) => {
-            if (characteristic.characteristic_reviews.length > 0) {
-              characteristicObj[characteristic.name] = {
-                id: characteristic.id,
-                value: addZeroes(characteristic.characteristic_reviews.reduce((acc, val) => {
-                  acc += val.value;
-                  return acc;
-                }, 0) / characteristic.characteristic_reviews.length),
-              };
-            } else {
-              characteristicObj[characteristic.name] = {
-                id: characteristic.id,
-              };
-            }
+            characteristicObj[characteristic.name] = {
+              id: characteristic.id,
+              value: (characteristic.characteristic_reviews.reduce((acc, val) => {
+                acc += val.value;
+                return acc;
+              }, 0) / characteristic.characteristic_reviews.length).toFixed(4),
+            };
           });
 
           return {
