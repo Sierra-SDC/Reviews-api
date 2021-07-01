@@ -78,6 +78,7 @@ module.exports = {
       .catch((err) => res.send(err));
   },
   getMetadata: (req, res) => {
+    // const product_id = 1 + Math.floor(Math.random() * 1000011);
     const { product_id } = req.query;
     Products.findAll({
       where: {
