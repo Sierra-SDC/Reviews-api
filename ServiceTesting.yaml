@@ -20,18 +20,3 @@ scenarios:
     flow:
       - get:
           url: '/api/reviews/meta?product_id=1'
-  - name: '/POST a Review'
-    flow:
-      - post:
-          url: '/api/reviews'
-          json: 
-            product_id: "{{ 1 }}"
-            rating: "{{ 5 }}"
-            summary: "{{ Service Testing }}"
-            body: "{{ Please Work }}"
-            recommend: "{{ TRUE }}"
-            name: "{{ postrequest }}"
-            email: "{{ test@gmail.com }}"
-            photos: "{{ https://picsum.photos/200/300 }}"
-            characteristics: "{{ {14: 2, 15: 2} }}"
-          
